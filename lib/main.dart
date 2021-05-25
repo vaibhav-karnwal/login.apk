@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './app_screens/home.dart';
 
@@ -7,66 +8,64 @@ void main()=> runApp(MyApp());
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Login(),
     );
-    throw UnimplementedError();
   }
 }
 
 class Login extends StatelessWidget{
   @override
     Widget build(BuildContext context) {
-    // TODO: implement build
       return Scaffold(
-        backgroundColor:Colors.white,
-        appBar: AppBar(
-          title:Text("Login Page"),
-        ),
-        body: SingleChildScrollView(
+        body: new Theme(
+          data: new ThemeData(
+            hintColor: Colors.yellow
+          ),
+        child:Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                colorFilter: new ColorFilter.mode(Colors.redAccent.withOpacity(0.4), BlendMode.color),
+                image: AssetImage("assets/images/1.jpg"), fit: BoxFit.cover),
+          ),
           child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Padding(
-                padding:const EdgeInsets.only(top:60.0),
-                child: Center(
-                  child:Container(
-                      height: 150.0,
-                      width: 200.0,
-                      child:Image.asset('assets/images/flutter-logo.png'
-                      )
-                  ),
-                ),
-              ),
+
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child:TextField(
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                      border:OutlineInputBorder(),
-                      labelText:'Email',
-                      hintText:'Enter valid email id as example@gmail.com'
+                      enabledBorder:OutlineInputBorder(borderSide: new BorderSide(color: Colors.grey,width: 2)),
+                      labelText:'Email',labelStyle: TextStyle(color: Colors.grey,fontSize: 20),
+                      fillColor: Colors.white,
+                      hintText:'Enter valid email id as example@gmail.com',hintStyle: TextStyle(color: Colors.grey),
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left:15.0, right:15.0, top:15.0, bottom:0),
                 child:TextField(
+                  style: TextStyle(color: Colors.white),
                   obscureText: true,
                   decoration: InputDecoration(
-                      border:OutlineInputBorder(),
-                      labelText: 'Password',
-                      hintText:'Enter secure password'
+                      enabledBorder:OutlineInputBorder(borderSide: new BorderSide(color: Colors.grey,width: 2)),
+                      labelText: 'Password',labelStyle: TextStyle(color: Colors.grey,fontSize: 20),
+                      fillColor: Colors.white,
+                      hintText:'Enter secure password',hintStyle: TextStyle(color: Colors.grey),
                   ),
                 ),
               ),
-              FlatButton(onPressed: (){
+              TextButton(onPressed: (){
                 //Forget password screen wil show here
               },
                 child: Text(
                   'Forget Password',
                   style:TextStyle(
-                      color:Colors.blue,
+                      color:Colors.white,
                       fontSize:15),
                 ),
               ),
@@ -75,7 +74,7 @@ class Login extends StatelessWidget{
                 width: 250,
                 decoration: BoxDecoration(
                   color: Colors.blue, borderRadius: BorderRadius.circular(20),),
-                child:FlatButton(
+                child:ElevatedButton(
                     onPressed:(){
                       Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
                     },
@@ -86,14 +85,14 @@ class Login extends StatelessWidget{
                 ),
               ),
               SizedBox(
-                height:130,
+                height:20,
               ),
-              Text('New User? Create Account')
+              Text('New User? Create Account',style: TextStyle(color: Colors.red[100]),)
             ],
           ),
         ),
+        ),
       );
-      throw UnimplementedError();
   }
 
 }
